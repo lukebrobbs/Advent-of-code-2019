@@ -1,7 +1,7 @@
 package main
 
-func getModules() []float64 {
-	return []float64{120183,
+func getModules() []module {
+	return []module{120183,
 		105169,
 		58942,
 		105283,

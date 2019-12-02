@@ -2,26 +2,28 @@ package main
 
 import "math"
 
-func calculateFuelForModule(n float64, includeFuel bool) int {
-	moduleFuel := math.Floor(n/3 - 2)
+type module int
+
+func (m module) calculateTotal(includeFuel bool) int {
+	moduleFuel := math.Floor(float64(m)/3 - 2)
 	if includeFuel == false {
 		return int(moduleFuel)
 	}
 	total := 0
 	if moduleFuel > 0 {
 		total += int(moduleFuel)
-		total += calculateFuelForModule(moduleFuel, true)
+		total += module(moduleFuel).calculateTotal(true)
 	}
 	return int(total)
 }
 
-func calculateFuelTotal(m []float64, includeFuel bool) int {
+func calculateFuelTotal(m []module, includeFuel bool) int {
 	total := 0
 	for _, module := range m {
 		if includeFuel {
-			total += int(calculateFuelForModule(module, true))
+			total += module.calculateTotal(true)
 		} else {
-			total += int(calculateFuelForModule(module, false))
+			total += module.calculateTotal(false)
 		}
 	}
 	return total
