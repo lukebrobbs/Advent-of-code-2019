@@ -5,16 +5,17 @@ import "math"
 type module int
 
 func (m module) calculateTotal(includeFuel bool) int {
-	moduleFuel := math.Floor(float64(m)/3 - 2)
+	moduleFuel := int(math.Floor(float64(m)/3 - 2))
+	if moduleFuel < 0 {
+		moduleFuel = 0
+	}
 	if includeFuel == false {
-		return int(moduleFuel)
+		return moduleFuel
 	}
-	total := 0
 	if moduleFuel > 0 {
-		total += int(moduleFuel)
-		total += module(moduleFuel).calculateTotal(true)
+		moduleFuel += module(moduleFuel).calculateTotal(true)
 	}
-	return int(total)
+	return moduleFuel
 }
 
 func calculateFuelTotal(m []module, includeFuel bool) int {
