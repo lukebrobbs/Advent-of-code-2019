@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { intCode, partTwo } from './intCode';
+import { intCode } from './intCode';
 import { codes } from './input';
 
 describe("intCode", () => {
