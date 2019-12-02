@@ -1,0 +1,28 @@
+{
+  "name": "Advent-of-code-2019",
+  "version": "1.0.0",
+  "description": "Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-mocha -p tsconfig.json **/*.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukebrobbs/Advent-of-code-2019.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukebrobbs/Advent-of-code-2019/issues"
+  },
+  "homepage": "https://github.com/lukebrobbs/Advent-of-code-2019#readme",
+  "devDependencies": {
+    "@types/expect": "^24.3.0",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "ts-mocha": "^6.0.0",
+    "typescript": "^3.7.2"
+  }
+}
