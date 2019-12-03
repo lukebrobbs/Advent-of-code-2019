@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 	"strconv"
 )
 
@@ -9,22 +10,37 @@ func handleDirection(d string, cp *[][]int) {
 	c := *cp
 	a, err := strconv.Atoi(d[1:])
 	newItem := []int{}
-	last := c[len(c)-1]
 
 	if err != nil {
 		fmt.Println("Unable to convert string to int")
 	}
 	switch string(d[0]) {
 	case "R":
-		newItem = []int{last[0] + a, last[1]}
+		for i := 0; i <= a; i++ {
+			last := c[len(c)-1]
+			newItem = []int{last[0] + 1, last[1]}
+			c = append(c, newItem)
+		}
 	case "L":
-		newItem = []int{last[0] - a, last[1]}
+		for i := 0; i <= a; i++ {
+			last := c[len(c)-1]
+			newItem = []int{last[0] - 1, last[1]}
+			c = append(c, newItem)
+		}
 	case "U":
-		newItem = []int{last[0], last[1] + a}
+		for i := 0; i <= a; i++ {
+			last := c[len(c)-1]
+			newItem = []int{last[0], last[1] + 1}
+			c = append(c, newItem)
+		}
 	case "D":
-		newItem = []int{last[0], last[1] - a}
+		for i := 0; i <= a; i++ {
+			last := c[len(c)-1]
+			newItem = []int{last[0], last[1] - 1}
+			c = append(c, newItem)
+		}
 	}
-	*cp = append(c, newItem)
+	*cp = append(c)
 }
 
 func drawCoordinates(d []string) [][]int {
@@ -35,6 +51,20 @@ func drawCoordinates(d []string) [][]int {
 	return c
 }
 
-func calculateDistance() {
+func calculateDistance(wireOne []string, wireTwo []string) {
+	coordsOne := drawCoordinates(wireOne)
+	coordsTwo := drawCoordinates(wireTwo)
+	// fmt.Println(coordsOne)
+	// fmt.Println(coordsTwo)
 
+	x := [][]int{}
+	for _, c := range coordsTwo {
+		for _, d := range coordsOne {
+			if reflect.DeepEqual(c, d) {
+				fmt.Println("Tague", c)
+				x = append(x, c)
+			}
+		}
+	}
+	fmt.Println(x)
 }
