@@ -14,10 +14,17 @@ func secureContainer(s int, f int) (count int) {
 }
 
 func containsDoubles(i int) (d bool) {
+	m := ""
 	s := strconv.Itoa(i)
 	for i := 0; i < len(s)-1; i++ {
+		if d == true && (string(s[i]) != string(s[i+1])) {
+			return true
+		}
 		if string(s[i]) == string(s[i+1]) {
-			d = true
+			m += string(s[i])
+			d = len(m) == 1
+		} else if len(m) > 1 {
+			m = ""
 		}
 	}
 	return d
