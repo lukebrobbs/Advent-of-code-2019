@@ -1,33 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"strconv"
 	"strings"
+
+	"github.com/lukebrobbs/Advent-of-code-2019/utils"
 )
-
-func readInput(filename string) []string {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := scanner.Text()
-		lines = append(lines, line)
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal("scan file error: %v", err)
-		return lines
-	}
-	return lines
-
-}
 
 func makeDigits(n int) []int {
 	digits := make([]int, 5)
@@ -128,7 +107,7 @@ func main() {
 
 	filePath := fmt.Sprintf("input.txt")
 	header := fmt.Sprintf("AoC %d - Day %02d\n-----------------\n", year, day)
-	lines := readInput(filePath)
+	lines := utils.ReadInput(filePath)
 
 	var (
 		solution1, solution2 int64
@@ -155,7 +134,6 @@ func main() {
 			break
 		}
 	}
-	fmt.Println(part1, part2)
 	fmt.Printf("%s\nSolution:\nPart1:\t%v\nPart2:\t%v",
 		header, solution1, solution2)
 }
